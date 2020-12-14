@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VH Player</title>
+
+    <!-- STYLES / ESTILOS -->
+    <link rel="stylesheet" href="assets/css/index.css">
+
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+
+    <!-- BOOTSRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <script src="./assets/js/welcome.js"></script>
+
+    <div class="pt-2">
+        <div class="row">
+            <div class="col-5 pl-5">
+                <div id="boas-vindas">
+                    <h1><script>welcome()</script>, Vitor.</h1>
+                    <h2>O quê vamos ouvir hoje?</h2>
+                </div>
+                <div id="new-songs-container" class="black-container mt-4 px-4 py-4">
+                    <h3>Últimas músicas adicionadas</h3>
+                    <div id="songs" class="lists">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-7 pl-4 pr-5">
+                <div class="search-box pt-4 pr-4 pl-3 d-flex flex-row-reverse">
+                    <input type="text" id="search" placeholder="Buscar na base de dados...">
+                    <span class="iconify mr-2" data-inline="false" data-icon="ant-design:search-outlined" style="font-size: 35px; color: #C6C6C6;"></span>
+                </div>
+                <div id="playlists-container" class="black-container mt-4 px-4 py-4">
+                    <h3>Playlists</h3>
+                    <div id="playlists" class="lists">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="music-bar" class="row">
+            <div id="music-info" class="col-md-3 d-flex flex-row">
+                <div id="img">
+                    <img src="/assets/files/default-music.jpg" alt="Music Logo" style="height: 100%; width: 100%;">
+                </div>
+                <div class="px-2 pb-3 d-flex flex-column-reverse">
+                    <p>Cantor</p>
+                    <marquee behavior="scroll" scrolldelay="110">Teste de música com nome grande</marquee>
+                </div>
+            </div>
+            <div id="music-control" class="col-md-6 px-4 d-flex flex-column justify-content-center align-items-center">
+                <div class="d-flex flex-row align-items-center">
+                    <span class="iconify mx-4 small-bt" data-inline="false" data-icon="ps:random"></span>
+                    <span class="iconify mx-4 medium-bt" data-inline="false" data-icon="ion:play-skip-forward" data-rotate="180deg"></span>
+                    <span id="play-pause" class="iconify mx-2 big-bt" data-inline="false" data-icon="gg:play-button-o"></span>
+                    <span class="iconify mx-4 medium-bt" data-inline="false" data-icon="ion:play-skip-forward"></span>
+                    <span class="iconify mx-4 small-bt" data-inline="false" data-icon="feather:repeat"></span>
+                </div>
+                <div id="music-range" class="d-flex flex-column w-100 mt-2">
+                    <div class="w-100 d-flex flex-row m-0 p-0">
+                        <p id="current-duration" class="m-0 p-0">00:00</p>
+                        <p id="total-duration" class="m-0 p-0 ml-auto">00:00</p>
+                    </div>
+                    <input id="seek-bar" value="0" min="0" max="100" type="range" name="seek-bar">
+                </div>
+            </div>
+            <div id="sound-control" class="col-md-3 pr-5 pt-3 d-flex flex-column justify-content-center align-items-end">
+                <div id="show-sound-thumb" class="m-0 p-0 d-flex">
+                    <span id="mute" class="iconify mr-2" data-inline="false" data-icon="subway:sound-1"></span>
+                    <input id="sound-bar" value="20" min="0" max="100" type="range" name="sound-bar" class="my-auto">
+                </div> 
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/index.js" type="module"></script>
+    <script>
+        var element = 'input[type=range]';
+        $(element).ready(function(){
+            var val = ($(element).val() - $(element).attr('min')) / ($(element).attr('max') - $(element).attr('min'));
+            $(element).css('background-image',
+                '-webkit-gradient(linear, left top, right top, '
+                + 'color-stop(' + val + ', #C6C6C6), '
+                + 'color-stop(' + val + ', #3F3F3F)'
+                + ')'
+            );
+        });
+    </script>
+    <script>
+        $('#sound-bar').on("change mousemove", function () {
+            var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
+        
+            $(this).css('background-image',
+                        '-webkit-gradient(linear, left top, right top, '
+                        + 'color-stop(' + val + ', #C6C6C6), '
+                        + 'color-stop(' + val + ', #3F3F3F)'
+                        + ')'
+                        );
+        });
+    </script>
+</body>
+</html>

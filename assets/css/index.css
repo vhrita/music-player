@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #202020 !important;
+}
+
+h1, h2, h3, h4, p, marquee {
+    font-family: 'Nunito', sans-serif !important;
+    color: #C6C6C6 !important;
+
+    /* Evitar seleção do texto */
+    -webkit-touch-callout: none;  /* iPhone OS, Safari */
+    -webkit-user-select: none;    /* Chrome, Safari 3 */
+    -khtml-user-select: none;     /* Safari 2 */
+    -moz-user-select: none;       /* Firefox */
+    -ms-user-select: none;        /* IE10+ */
+    user-select: none;            /* Possível implementação no futuro */
+    /* cursor: default; */
+}
+
+#boas-vindas > h1 {
+    font-size: 60px;
+    font-weight: 800 !important;
+}
+
+#boas-vindas > h2 {
+    font-size: 30px;
+    font-weight: 400 !important;
+}
+
+#search {
+    border: none;
+    outline: 0;
+    color: #5E5E5E;
+    background-color: #E6E6E6;
+    width: 95%;
+    padding: 0 0 0 2%;
+    height: 35px;
+    border-radius: 30px;
+}
+
+.black-container {
+    background-color: #181818;
+    border-radius: 35px;
+    min-width: 100%;
+}
+
+#new-songs-container {
+    height: 400px;
+}
+
+h3 {
+    font-weight: 300 !important;
+}
+
+.lists {
+    margin-top: 3%;
+    width: 100%;
+    height: 85%;
+    overflow-y: auto;
+}
+
+#playlists-container {
+    height: 456px;
+}
+
+#music-bar {
+    width: 100%;
+    height: 120px;
+    background-color: #181818;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+#music-info > #img {
+    height: 100%;
+    max-width: 40% !important;
+}
+
+#music-info {
+    max-width: 60% !important;
+}
+
+#music-info p {
+    margin: 0 !important;
+    font-size: 16px;
+}
+
+#music-info marquee {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#music-control .iconify {
+    color: #C6C6C6;
+    cursor: pointer;
+}
+
+#music-control .iconify:hover {
+    color: #FFFFFF;
+}
+
+#music-control .small-bt {
+    font-size: 20px;
+}
+
+#music-control .small-bt:hover {
+    font-size: 25px;
+}
+
+#music-control .medium-bt {
+    font-size: 27px;
+}
+
+#music-control .medium-bt:hover {
+    font-size: 32px;
+}
+
+#music-control .big-bt {
+    font-size: 40px;
+}
+
+#music-control .big-bt:hover {
+    font-size: 45px;
+}
+
+#music-range p {
+  font-size: 12px;
+}
+
+#seek-bar, #sound-bar {
+  background-image: none;
+  border-radius: 8px;
+  height: 7px;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+  transition: background 450ms ease-in;
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50px;
+  background: #C6C6C6;
+  cursor: pointer;
+  transition: 0ms ease-out;
+}
+
+#sound-control .iconify {
+  color: #C6C6C6;
+  cursor: pointer;
+  font-size: 30px;
+}
