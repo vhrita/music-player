@@ -137,6 +137,10 @@ h3 {
   font-size: 12px;
 }
 
+#pause {
+    display: none;
+}
+
 #seek-bar, #sound-bar {
   background-image: none;
   border-radius: 8px;

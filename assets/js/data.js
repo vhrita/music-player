@@ -15,6 +15,6 @@ export default [
       title: "Next to Me",
       artist: "Imagine Dragons",
       cover: "default-music.jpg",
-      file: "imagine-dragon-next-to-me.mp3"
+      file: "imagine-dragons-next-to-me.mp3"
     }
   ];

@@ -12,24 +12,18 @@ export default {
     this.update();
   },
 
-  play() {
+  togglePlay() {
     this.isPlaying = true;
     this.audio.play();
-    $('#play-pause').replaceWith('<span id="play-pause" class="iconify mx-2 big-bt" data-inline="false" data-icon="gg:play-pause-o"></span>');
+    $('#play').hide();
+    $('#pause').show();
   },
 
-  pause() {
+  togglePause() {
     this.isPlaying = false;
     this.audio.pause();
-    $('#play-pause').replaceWith('<span id="play-pause" class="iconify mx-2 big-bt" data-inline="false" data-icon="gg:play-button-o"></span>');
-  },
-
-  togglePlayPause() {
-    if (this.isPlaying) {
-      this.pause();
-    } else {
-      this.play();
-    }
+    $('#pause').hide();
+    $('#play').show();
   },
 
   toggleMute() {
@@ -38,10 +32,11 @@ export default {
   },
 
   next() {
+    this.audio.pause();
     this.currentPlaying++;
     if (this.currentPlaying == this.audioData.length) this.restart();
     this.update();
-    this.play();
+    this.togglePlay();
   },
 
   setVolume(value) {
