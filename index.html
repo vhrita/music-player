@@ -59,7 +59,7 @@
             <div id="music-control" class="col-md-6 px-4 d-flex flex-column justify-content-center align-items-center">
                 <div class="d-flex flex-row align-items-center">
                     <span class="iconify mx-4 small-bt" data-inline="false" data-icon="ps:random"></span>
-                    <span class="iconify mx-4 medium-bt" data-inline="false" data-icon="ion:play-skip-forward" data-rotate="180deg"></span>
+                    <span id="prev" class="iconify mx-4 medium-bt" data-inline="false" data-icon="ion:play-skip-forward" data-rotate="180deg"></span>
                     <span id="play" class="iconify mx-2 big-bt" data-inline="false" data-icon="gg:play-button-o"></span>
                     <span id="pause" class="iconify mx-2 big-bt" data-inline="false" data-icon="gg:play-pause-o"></span>
                     <span id="next" class="iconify mx-4 medium-bt" data-inline="false" data-icon="ion:play-skip-forward"></span>
@@ -76,35 +76,11 @@
             <div id="sound-control" class="col-md-3 pr-5 pt-3 d-flex flex-column justify-content-center align-items-end">
                 <div id="show-sound-thumb" class="m-0 p-0 d-flex">
                     <span id="mute" class="iconify mr-2" data-inline="false" data-icon="subway:sound-1"></span>
-                    <input id="sound-bar" value="20" min="0" max="100" type="range" name="sound-bar" class="my-auto">
+                    <input id="sound-bar" value="0" min="0" max="100" type="range" name="sound-bar" class="my-auto">
                 </div> 
             </div>
         </div>
     </div>
     <script src="assets/js/index.js" type="module"></script>
-    <script>
-        var element = 'input[type=range]';
-        $(element).ready(function(){
-            var val = ($(element).val() - $(element).attr('min')) / ($(element).attr('max') - $(element).attr('min'));
-            $(element).css('background-image',
-                '-webkit-gradient(linear, left top, right top, '
-                + 'color-stop(' + val + ', #C6C6C6), '
-                + 'color-stop(' + val + ', #3F3F3F)'
-                + ')'
-            );
-        });
-    </script>
-    <script>
-        $('#sound-bar').on("change mousemove", function () {
-            var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
-        
-            $(this).css('background-image',
-                        '-webkit-gradient(linear, left top, right top, '
-                        + 'color-stop(' + val + ', #C6C6C6), '
-                        + 'color-stop(' + val + ', #3F3F3F)'
-                        + ')'
-                        );
-        });
-    </script>
 </body>
 </html>

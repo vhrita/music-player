@@ -10,6 +10,8 @@ export default {
   start() {
     elements.get.call(this);
     this.update();
+    this.setVolume(localStorage.getItem('volume'));
+    this.timeUpdate();
   },
 
   togglePlay() {
@@ -36,11 +38,30 @@ export default {
     this.currentPlaying++;
     if (this.currentPlaying == this.audioData.length) this.restart();
     this.update();
+    this.setVolume(this.volume.value);
+    this.togglePlay();
+  },
+
+  prev() {
+    this.audio.pause();
+    this.currentPlaying--;
+    if (this.currentPlaying == -1) this.currentPlaying = this.audioData.length-1;
+    this.update();
+    this.setVolume(this.volume.value);
     this.togglePlay();
   },
 
   setVolume(value) {
     this.audio.volume = value / 100;
+    localStorage.setItem('volume', value);
+    this.volume.value = value;
+    let val = (this.volume.value - this.volume.min) / (this.volume.max - this.volume.min);
+    $(this.volume).css('background-image',
+                        '-webkit-gradient(linear, left top, right top, '
+                        + 'color-stop(' + val + ', #C6C6C6), '
+                        + 'color-stop(' + val + ', #3F3F3F)'
+                        + ')'
+    );
   },
 
   setSeek(value) {
