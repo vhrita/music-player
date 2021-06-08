@@ -3,8 +3,8 @@ import { secondsToMinutes } from "./utils.js";
 export default {
   get() {
     this.cover = document.querySelector("#img img");
-    this.title = document.querySelector("#music-info marquee");
-    this.artist = document.querySelector("#music-info p");
+    this.title = document.querySelector("#title");
+    this.artist = document.querySelector("#artist");
     this.play = document.querySelector("#play");
     this.pause = document.querySelector("#pause");
     this.mute = document.querySelector("#mute");

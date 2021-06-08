@@ -84,7 +84,13 @@ export default {
     this.currentAudio = this.audioData[this.currentPlaying];
     this.cover.src = path(this.currentAudio.cover);
     this.title.innerText = this.currentAudio.title;
+    if(this.currentAudio.title.length > 21) {
+      marqueeTitle();
+    }
     this.artist.innerText = this.currentAudio.artist;
+    if(this.currentAudio.artist.length > 30) {
+      marqueeArtist();
+    }
     elements.createAudioElement.call(this, path(this.currentAudio.file));
 
     this.audio.onloadeddata = () => {
@@ -96,4 +102,44 @@ export default {
     this.currentPlaying = 0;
     this.update();
   }
+};
+
+function marqueeTitle() {
+  var options = {
+      startVisible: true,
+      delayBeforeStart: 0
+  };
+  $('#title').marquee(options);
+
+  $('#title').marquee('pause');  
+
+  $(document).on('mouseover', '#title', function() {
+      $(this).marquee('resume');
+  });
+
+  $(document).on('mouseleave', '#title', function() {
+      $(this).marquee('destroy'); 
+      $(this).marquee(options);
+      $(this).marquee('pause');
+  });
+};
+
+function marqueeArtist() {
+  let options = {
+      startVisible: true,
+      delayBeforeStart: 0
+  };
+  $('#artist').marquee(options);
+
+  $('#artist').marquee('pause');  
+
+  $(document).on('mouseover', '#artist', function() {
+      $(this).marquee('resume');
+  });
+
+  $(document).on('mouseleave', '#artist', function() {
+      $(this).marquee('destroy'); 
+      $(this).marquee(options);
+      $(this).marquee('pause');
+  });
 };
